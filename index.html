@@ -1,0 +1,499 @@
+```html
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TikTok এ সফল হওয়ার ১০০ টি উপায়</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    
+    <!-- Google Fonts (Bangla) -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Hind Siliguri', 'sans-serif'],
+                    },
+                    colors: {
+                        tiktok: {
+                            dark: '#050505',
+                            cyan: '#01FFFF',
+                            pink: '#FF0050',
+                            gray: '#8A8B91'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            font-family: 'Hind Siliguri', sans-serif;
+            overflow: hidden; /* Prevent body scrolling */
+        }
+
+        .app-container {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            background-color: #000000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            background-color: #000000;
+            padding: 16px;
+            padding-bottom: 24px;
+            box-sizing: border-box;
+            height: 100%;
+        }
+
+        /* html2canvas safe gradient border approach */
+        .capture-wrapper {
+            width: 100%;
+            flex-grow: 1;
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .watermark {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 1px;
+        }
+
+        .neon-text-cyan {
+            text-shadow: 0 0 5px rgba(1, 255, 255, 0.8), 0 0 10px rgba(1, 255, 255, 0.5);
+        }
+        .neon-text-pink {
+            text-shadow: 0 0 5px rgba(255, 0, 80, 0.8), 0 0 10px rgba(255, 0, 80, 0.5);
+        }
+
+        .download-btn {
+            height: 60px;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        #loading-overlay {
+            display: none;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <i class="fas fa-spinner fa-spin text-5xl text-tiktok-cyan mb-4"></i>
+        <p class="text-xl font-medium">আপনার ছবি তৈরি হচ্ছে...</p>
+    </div>
+
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+
+            <!-- ================= COVER PAGE ================= -->
+            <div class="swiper-slide flex justify-center items-center">
+                <div class="w-full h-full flex flex-col justify-center items-center text-center p-6 relative bg-[#0a0a0a] rounded-3xl border border-gray-800">
+                    <div class="absolute top-10 left-4 text-tiktok-cyan opacity-20 text-7xl"><i class="fab fa-tiktok"></i></div>
+                    <div class="absolute bottom-24 right-4 text-tiktok-pink opacity-20 text-7xl"><i class="fab fa-tiktok"></i></div>
+                    
+                    <h3 class="text-tiktok-cyan font-bold tracking-widest uppercase mb-3 text-lg">কমপ্লিট গাইডলাইন</h3>
+                    <h1 class="text-5xl md:text-6xl font-bold text-white mb-8 leading-tight">
+                        TikTok এ<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-tiktok-cyan to-tiktok-pink neon-text-pink">সফল হওয়ার</span><br>
+                        ১০০ টি উপায়
+                    </h1>
+                    <p class="text-gray-300 mb-12 text-lg">মোবাইল ফ্রেন্ডলি ইবুক • স্লাইড করে পড়ুন • সেভ করে শেয়ার করুন</p>
+                    
+                    <button onclick="startReading()" class="bg-gradient-to-r from-tiktok-cyan to-tiktok-pink text-white font-bold py-4 px-10 rounded-full text-2xl shadow-[0_0_20px_rgba(255,0,80,0.4)] transform transition hover:scale-105 mb-6 w-full max-w-[350px]">
+                        পড়া শুরু করুন <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+
+                    <button id="installAppBtn" class="hidden border border-gray-600 text-gray-300 py-2 px-6 rounded-full text-base hover:bg-gray-800 transition mt-4">
+                        <i class="fas fa-download mr-2"></i> অ্যাপ ইন্সটল করুন
+                    </button>
+                    
+                    <p class="absolute bottom-8 text-sm text-gray-500 animate-pulse"><i class="fas fa-chevron-right mr-1"></i> ডানে স্লাইড করুন</p>
+                </div>
+            </div>
+
+            <!-- ================= SLIDE 1 ================= -->
+            <div class="swiper-slide">
+                <!-- Capture Wrapper (Border Gradient) -->
+                <div id="slide-1" class="capture-wrapper p-[3px] rounded-[24px] bg-gradient-to-br from-tiktok-cyan via-purple-500 to-tiktok-pink">
+                    <!-- Inner Content (Dark Bg) -->
+                    <div class="bg-tiktok-dark w-full h-full rounded-[21px] relative flex flex-col p-6 md:p-8 overflow-hidden">
+                        
+                        <!-- Top Bar -->
+                        <div class="flex justify-between items-center w-full z-10 mb-2">
+                            <span class="bg-tiktok-pink text-white text-sm md:text-base font-bold px-4 py-1.5 rounded-full shadow-[0_0_10px_rgba(255,0,80,0.5)]">টিপস ১</span>
+                            <span class="text-tiktok-cyan font-bold text-lg drop-shadow-[0_0_8px_rgba(1,255,255,0.6)]">১ / ১০০</span>
+                        </div>
+
+                        <!-- Vertically Centered Main Content -->
+                        <div class="flex-grow flex flex-col justify-center items-center text-center pb-10">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 leading-snug">আপনার নিস (Niche) বা বিষয়বস্তু নির্ধারণ করুন</h2>
+                            
+                            <div class="text-gray-200 text-xl md:text-2xl space-y-6 leading-relaxed w-full">
+                                <p>টিকটকে সফল হওয়ার প্রথম ধাপ হলো আপনি কোন বিষয়ে ভিডিও বানাবেন তা নির্দিষ্ট করা। একে বলা হয় 'নিস' (Niche)।</p>
+                                <p>যেকোনো একটি নির্দিষ্ট বিষয় (যেমন: কমেডি, শিক্ষামূলক, টেকনোলজি, বা রান্না) বেছে নিন।</p>
+                                
+                                <div class="bg-[#151515] p-5 rounded-2xl border-l-4 border-tiktok-cyan mt-8 text-left shadow-lg inline-block text-lg md:text-xl border border-gray-800 w-full">
+                                    <i class="fas fa-lightbulb text-tiktok-cyan mr-2"></i> <strong>প্রো-টিপ:</strong> এমন বিষয় বেছে নিন যা আপনি ভালোবাসেন এবং দীর্ঘসময় কন্টেন্ট বানাতে পারবেন।
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Watermark -->
+                        <div class="watermark">@আপনার_ইউজারনেম</div>
+                    </div>
+                </div>
+                
+                <button onclick="downloadSlide('slide-1')" class="download-btn bg-gray-900 hover:bg-gray-800 text-white rounded-2xl w-full font-bold border border-gray-700 transition flex justify-center items-center gap-3 shadow-xl">
+                    <i class="fas fa-camera text-tiktok-cyan text-xl"></i> ছবি হিসেবে সেভ করুন
+                </button>
+            </div>
+
+            <!-- ================= SLIDE 2 ================= -->
+            <div class="swiper-slide">
+                <div id="slide-2" class="capture-wrapper p-[3px] rounded-[24px] bg-gradient-to-br from-tiktok-cyan via-purple-500 to-tiktok-pink">
+                    <div class="bg-tiktok-dark w-full h-full rounded-[21px] relative flex flex-col p-6 md:p-8 overflow-hidden">
+                        <div class="flex justify-between items-center w-full z-10 mb-2">
+                            <span class="bg-tiktok-pink text-white text-sm md:text-base font-bold px-4 py-1.5 rounded-full shadow-[0_0_10px_rgba(255,0,80,0.5)]">টিপস ২</span>
+                            <span class="text-tiktok-cyan font-bold text-lg drop-shadow-[0_0_8px_rgba(1,255,255,0.6)]">২ / ১০০</span>
+                        </div>
+                        <div class="flex-grow flex flex-col justify-center items-center text-center pb-10">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 leading-snug">প্রোফাইল আকর্ষণীয়ভাবে সাজান</h2>
+                            <div class="text-gray-200 text-xl md:text-2xl space-y-6 leading-relaxed w-full text-left">
+                                <p class="text-center">আপনার প্রোফাইল হলো আপনার পরিচয়পত্র। দর্শক যেন প্রোফাইলে এসেই বুঝতে পারে আপনি কী করেন।</p>
+                                <ul class="list-disc pl-8 space-y-4 mt-6">
+                                    <li>পরিষ্কার ও সুন্দর প্রোফাইল পিকচার দিন।</li>
+                                    <li>বায়ো (Bio) তে স্পষ্ট করে লিখুন অ্যাকাউন্টটি কী সম্পর্কে।</li>
+                                    <li>প্রয়োজনে আপনার ইউটিউব বা অন্যান্য সোশ্যাল লিংক যুক্ত করুন।</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="watermark">@আপনার_ইউজারনেম</div>
+                    </div>
+                </div>
+                <button onclick="downloadSlide('slide-2')" class="download-btn bg-gray-900 hover:bg-gray-800 text-white rounded-2xl w-full font-bold border border-gray-700 transition flex justify-center items-center gap-3 shadow-xl">
+                    <i class="fas fa-camera text-tiktok-cyan text-xl"></i> ছবি হিসেবে সেভ করুন
+                </button>
+            </div>
+
+            <!-- ================= SLIDE 3 ================= -->
+            <div class="swiper-slide">
+                <div id="slide-3" class="capture-wrapper p-[3px] rounded-[24px] bg-gradient-to-br from-tiktok-cyan via-purple-500 to-tiktok-pink">
+                    <div class="bg-tiktok-dark w-full h-full rounded-[21px] relative flex flex-col p-6 md:p-8 overflow-hidden">
+                        <div class="flex justify-between items-center w-full z-10 mb-2">
+                            <span class="bg-tiktok-pink text-white text-sm md:text-base font-bold px-4 py-1.5 rounded-full shadow-[0_0_10px_rgba(255,0,80,0.5)]">টিপস ৩</span>
+                            <span class="text-tiktok-cyan font-bold text-lg drop-shadow-[0_0_8px_rgba(1,255,255,0.6)]">৩ / ১০০</span>
+                        </div>
+                        <div class="flex-grow flex flex-col justify-center items-center text-center pb-10">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 leading-snug">উচ্চ মানের (High-Quality) ভিডিও তৈরি করুন</h2>
+                            <div class="text-gray-200 text-xl md:text-2xl space-y-6 leading-relaxed w-full">
+                                <p>অন্ধকার বা ঘোলা ভিডিও মানুষ দেখতে পছন্দ করে না। ভিডিওর কোয়ালিটির সাথে আপস করবেন না।</p>
+                                <p>স্মার্টফোন দিয়েই ভালো ভিডিও করা সম্ভব। শুধু পর্যাপ্ত আলোর ব্যবস্থা করুন এবং ব্যাকগ্রাউন্ড পরিষ্কার রাখুন।</p>
+                                <div class="bg-[#151515] p-5 rounded-2xl border-l-4 border-tiktok-pink mt-8 shadow-lg text-lg md:text-xl border border-gray-800 w-full text-left">
+                                    <i class="fas fa-check-circle text-tiktok-pink mr-2"></i> ভিডিও আপলোডের সময় 'Allow High Quality Uploads' অপশনটি চালু রাখুন।
+                                </div>
+                            </div>
+                        </div>
+                        <div class="watermark">@আপনার_ইউজারনেম</div>
+                    </div>
+                </div>
+                <button onclick="downloadSlide('slide-3')" class="download-btn bg-gray-900 hover:bg-gray-800 text-white rounded-2xl w-full font-bold border border-gray-700 transition flex justify-center items-center gap-3 shadow-xl">
+                    <i class="fas fa-camera text-tiktok-cyan text-xl"></i> ছবি হিসেবে সেভ করুন
+                </button>
+            </div>
+
+            <!-- ================= SLIDE 4 ================= -->
+            <div class="swiper-slide">
+                <div id="slide-4" class="capture-wrapper p-[3px] rounded-[24px] bg-gradient-to-br from-tiktok-cyan via-purple-500 to-tiktok-pink">
+                    <div class="bg-tiktok-dark w-full h-full rounded-[21px] relative flex flex-col p-6 md:p-8 overflow-hidden">
+                        <div class="flex justify-between items-center w-full z-10 mb-2">
+                            <span class="bg-tiktok-pink text-white text-sm md:text-base font-bold px-4 py-1.5 rounded-full shadow-[0_0_10px_rgba(255,0,80,0.5)]">টিপস ৪</span>
+                            <span class="text-tiktok-cyan font-bold text-lg drop-shadow-[0_0_8px_rgba(1,255,255,0.6)]">৪ / ১০০</span>
+                        </div>
+                        <div class="flex-grow flex flex-col justify-center items-center text-center pb-10">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 leading-snug">প্রথম ৩ সেকেন্ডে 'হুক' (Hook) তৈরি করুন</h2>
+                            <div class="text-gray-200 text-xl md:text-2xl space-y-6 leading-relaxed w-full">
+                                <p>টিকটকে মানুষের মনোযোগ ধরে রাখার সময় খুব কম। ভিডিওর প্রথম ৩ সেকেন্ড খুবই গুরুত্বপূর্ণ।</p>
+                                <p>প্রথম ৩ সেকেন্ডেই দর্শককে বুঝিয়ে দিন ভিডিওটিতে কী থাকছে যাতে সে পুরো ভিডিওটি দেখতে বাধ্য হয়।</p>
+                                <div class="bg-[#151515] p-5 rounded-2xl border-l-4 border-tiktok-cyan mt-8 text-left shadow-lg text-lg md:text-xl border border-gray-800 w-full">
+                                    <strong>উদাহরণ:</strong> "এই ৩টি ভুলের কারণে আপনার ভিডিও ভাইরাল হচ্ছে না!" - এ ধরনের কথা হুক হিসেবে দারুণ কাজ করে।
+                                </div>
+                            </div>
+                        </div>
+                        <div class="watermark">@আপনার_ইউজারনেম</div>
+                    </div>
+                </div>
+                <button onclick="downloadSlide('slide-4')" class="download-btn bg-gray-900 hover:bg-gray-800 text-white rounded-2xl w-full font-bold border border-gray-700 transition flex justify-center items-center gap-3 shadow-xl">
+                    <i class="fas fa-camera text-tiktok-cyan text-xl"></i> ছবি হিসেবে সেভ করুন
+                </button>
+            </div>
+
+            <!-- ================= SLIDE 5 ================= -->
+            <div class="swiper-slide">
+                <div id="slide-5" class="capture-wrapper p-[3px] rounded-[24px] bg-gradient-to-br from-tiktok-cyan via-purple-500 to-tiktok-pink">
+                    <div class="bg-tiktok-dark w-full h-full rounded-[21px] relative flex flex-col p-6 md:p-8 overflow-hidden">
+                        <div class="flex justify-between items-center w-full z-10 mb-2">
+                            <span class="bg-tiktok-pink text-white text-sm md:text-base font-bold px-4 py-1.5 rounded-full shadow-[0_0_10px_rgba(255,0,80,0.5)]">টিপস ৫</span>
+                            <span class="text-tiktok-cyan font-bold text-lg drop-shadow-[0_0_8px_rgba(1,255,255,0.6)]">৫ / ১০০</span>
+                        </div>
+                        <div class="flex-grow flex flex-col justify-center items-center text-center pb-10">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 leading-snug">ট্রেন্ডিং মিউজিক এবং সাউন্ড ব্যবহার</h2>
+                            <div class="text-gray-200 text-xl md:text-2xl space-y-6 leading-relaxed w-full">
+                                <p>টিকটক মূলত মিউজিক-নির্ভর প্ল্যাটফর্ম। বর্তমানে ট্রেন্ডে থাকা সাউন্ড ব্যবহার করলে ভিডিও 'For You' পেজে যাওয়ার সম্ভাবনা বাড়ে।</p>
+                                <p>ভিডিও যদি আপনার নিজের কণ্ঠের বা শিক্ষামূলকও হয়, তবুও ব্যাকগ্রাউন্ডে খুব কম ভলিউমে (১০-১৫%) একটি ট্রেন্ডিং মিউজিক ব্যবহার করুন।</p>
+                            </div>
+                        </div>
+                        <div class="watermark">@আপনার_ইউজারনেম</div>
+                    </div>
+                </div>
+                <button onclick="downloadSlide('slide-5')" class="download-btn bg-gray-900 hover:bg-gray-800 text-white rounded-2xl w-full font-bold border border-gray-700 transition flex justify-center items-center gap-3 shadow-xl">
+                    <i class="fas fa-camera text-tiktok-cyan text-xl"></i> ছবি হিসেবে সেভ করুন
+                </button>
+            </div>
+
+            <!-- ================= SLIDE 6 ================= -->
+            <div class="swiper-slide">
+                <div id="slide-6" class="capture-wrapper p-[3px] rounded-[24px] bg-gradient-to-br from-tiktok-cyan via-purple-500 to-tiktok-pink">
+                    <div class="bg-tiktok-dark w-full h-full rounded-[21px] relative flex flex-col p-6 md:p-8 overflow-hidden">
+                        <div class="flex justify-between items-center w-full z-10 mb-2">
+                            <span class="bg-tiktok-pink text-white text-sm md:text-base font-bold px-4 py-1.5 rounded-full shadow-[0_0_10px_rgba(255,0,80,0.5)]">টিপস ৬</span>
+                            <span class="text-tiktok-cyan font-bold text-lg drop-shadow-[0_0_8px_rgba(1,255,255,0.6)]">৬ / ১০০</span>
+                        </div>
+                        <div class="flex-grow flex flex-col justify-center items-center text-center pb-10">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 leading-snug">সঠিক হ্যাশট্যাগ (#Hashtag) ব্যবহার</h2>
+                            <div class="text-gray-200 text-xl md:text-2xl space-y-6 leading-relaxed w-full text-left">
+                                <p class="text-center">সঠিক হ্যাশট্যাগ অ্যালগরিদমকে বোঝাতে সাহায্য করে আপনার ভিডিওটি কাদের কাছে পৌঁছানো উচিত।</p>
+                                <ul class="list-disc pl-8 space-y-4 mt-6">
+                                    <li>৩-৫ টি প্রাসঙ্গিক হ্যাশট্যাগ দিন।</li>
+                                    <li>১-২ টি বড় (broad) এবং ২-৩ টি নির্দিষ্ট (niche-specific) হ্যাশট্যাগ ব্যবহার করুন।</li>
+                                    <li>অপ্রাসঙ্গিক বা অনেক বেশি হ্যাশট্যাগ ব্যবহার থেকে বিরত থাকুন।</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="watermark">@আপনার_ইউজারনেম</div>
+                    </div>
+                </div>
+                <button onclick="downloadSlide('slide-6')" class="download-btn bg-gray-900 hover:bg-gray-800 text-white rounded-2xl w-full font-bold border border-gray-700 transition flex justify-center items-center gap-3 shadow-xl">
+                    <i class="fas fa-camera text-tiktok-cyan text-xl"></i> ছবি হিসেবে সেভ করুন
+                </button>
+            </div>
+
+            <!-- ================= SLIDE 7 ================= -->
+            <div class="swiper-slide">
+                <div id="slide-7" class="capture-wrapper p-[3px] rounded-[24px] bg-gradient-to-br from-tiktok-cyan via-purple-500 to-tiktok-pink">
+                    <div class="bg-tiktok-dark w-full h-full rounded-[21px] relative flex flex-col p-6 md:p-8 overflow-hidden">
+                        <div class="flex justify-between items-center w-full z-10 mb-2">
+                            <span class="bg-tiktok-pink text-white text-sm md:text-base font-bold px-4 py-1.5 rounded-full shadow-[0_0_10px_rgba(255,0,80,0.5)]">টিপস ৭</span>
+                            <span class="text-tiktok-cyan font-bold text-lg drop-shadow-[0_0_8px_rgba(1,255,255,0.6)]">৭ / ১০০</span>
+                        </div>
+                        <div class="flex-grow flex flex-col justify-center items-center text-center pb-10">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 leading-snug">ক্যাপশন আকর্ষণীয় করে লিখুন</h2>
+                            <div class="text-gray-200 text-xl md:text-2xl space-y-6 leading-relaxed w-full">
+                                <p>ভিডিওর ক্যাপশন এমনভাবে লিখুন যাতে মানুষ কমেন্ট করতে বা ভিডিওটি শেয়ার করতে উৎসাহিত হয়।</p>
+                                <p>ক্যাপশনে দর্শকদের উদ্দেশ্যে কোনো প্রশ্ন জুড়ে দিতে পারেন। যেমন: "আপনার মতে কোনটি সেরা?" এতে মানুষ কমেন্ট করবে এবং এঙ্গেজমেন্ট বাড়বে।</p>
+                            </div>
+                        </div>
+                        <div class="watermark">@আপনার_ইউজারনেম</div>
+                    </div>
+                </div>
+                <button onclick="downloadSlide('slide-7')" class="download-btn bg-gray-900 hover:bg-gray-800 text-white rounded-2xl w-full font-bold border border-gray-700 transition flex justify-center items-center gap-3 shadow-xl">
+                    <i class="fas fa-camera text-tiktok-cyan text-xl"></i> ছবি হিসেবে সেভ করুন
+                </button>
+            </div>
+
+            <!-- ================= SLIDE 8 ================= -->
+            <div class="swiper-slide">
+                <div id="slide-8" class="capture-wrapper p-[3px] rounded-[24px] bg-gradient-to-br from-tiktok-cyan via-purple-500 to-tiktok-pink">
+                    <div class="bg-tiktok-dark w-full h-full rounded-[21px] relative flex flex-col p-6 md:p-8 overflow-hidden">
+                        <div class="flex justify-between items-center w-full z-10 mb-2">
+                            <span class="bg-tiktok-pink text-white text-sm md:text-base font-bold px-4 py-1.5 rounded-full shadow-[0_0_10px_rgba(255,0,80,0.5)]">টিপস ৮</span>
+                            <span class="text-tiktok-cyan font-bold text-lg drop-shadow-[0_0_8px_rgba(1,255,255,0.6)]">৮ / ১০০</span>
+                        </div>
+                        <div class="flex-grow flex flex-col justify-center items-center text-center pb-10">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 leading-snug">ধারাবাহিকতা (Consistency) বজায় রাখুন</h2>
+                            <div class="text-gray-200 text-xl md:text-2xl space-y-6 leading-relaxed w-full">
+                                <p>টিকটকে সফল হওয়ার সবচেয়ে বড় চাবিকাঠি হলো কনসিস্টেন্সি বা নিয়মিত ভিডিও আপলোড করা।</p>
+                                <div class="bg-[#151515] p-5 rounded-2xl border-l-4 border-tiktok-pink mt-8 text-left shadow-lg text-lg md:text-xl border border-gray-800 w-full">
+                                    <i class="fas fa-calendar-alt text-tiktok-pink mr-2"></i> প্রতিদিন অন্তত ১টি বা সপ্তাহে ৩-৪টি ভিডিও আপলোড করুন। একদিন ৫টি ভিডিও দিয়ে এরপর ১ মাস গায়েব হলে অ্যাকাউন্ট ডাউন হয়ে যাবে।
+                                </div>
+                            </div>
+                        </div>
+                        <div class="watermark">@আপনার_ইউজারনেম</div>
+                    </div>
+                </div>
+                <button onclick="downloadSlide('slide-8')" class="download-btn bg-gray-900 hover:bg-gray-800 text-white rounded-2xl w-full font-bold border border-gray-700 transition flex justify-center items-center gap-3 shadow-xl">
+                    <i class="fas fa-camera text-tiktok-cyan text-xl"></i> ছবি হিসেবে সেভ করুন
+                </button>
+            </div>
+
+            <!-- ================= SLIDE 9 ================= -->
+            <div class="swiper-slide">
+                <div id="slide-9" class="capture-wrapper p-[3px] rounded-[24px] bg-gradient-to-br from-tiktok-cyan via-purple-500 to-tiktok-pink">
+                    <div class="bg-tiktok-dark w-full h-full rounded-[21px] relative flex flex-col p-6 md:p-8 overflow-hidden">
+                        <div class="flex justify-between items-center w-full z-10 mb-2">
+                            <span class="bg-tiktok-pink text-white text-sm md:text-base font-bold px-4 py-1.5 rounded-full shadow-[0_0_10px_rgba(255,0,80,0.5)]">টিপস ৯</span>
+                            <span class="text-tiktok-cyan font-bold text-lg drop-shadow-[0_0_8px_rgba(1,255,255,0.6)]">৯ / ১০০</span>
+                        </div>
+                        <div class="flex-grow flex flex-col justify-center items-center text-center pb-10">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 leading-snug">দর্শকদের সাথে মিথস্ক্রিয়া (Engage) করুন</h2>
+                            <div class="text-gray-200 text-xl md:text-2xl space-y-6 leading-relaxed w-full">
+                                <p>ভিডিওতে কেউ কমেন্ট করলে চেষ্টা করুন রিপ্লাই দেওয়ার। ভালো কমেন্টগুলো লাইক করুন।</p>
+                                <p>প্রয়োজনে 'Video Reply' ফিচার ব্যবহার করে সুন্দর কমেন্টের উত্তর নিয়ে নতুন ভিডিও তৈরি করুন। এটি ফলোয়ারদের আপনার প্রতি আরও অনুগত করে তোলে।</p>
+                            </div>
+                        </div>
+                        <div class="watermark">@আপনার_ইউজারনেম</div>
+                    </div>
+                </div>
+                <button onclick="downloadSlide('slide-9')" class="download-btn bg-gray-900 hover:bg-gray-800 text-white rounded-2xl w-full font-bold border border-gray-700 transition flex justify-center items-center gap-3 shadow-xl">
+                    <i class="fas fa-camera text-tiktok-cyan text-xl"></i> ছবি হিসেবে সেভ করুন
+                </button>
+            </div>
+
+            <!-- ================= SLIDE 10 ================= -->
+            <div class="swiper-slide">
+                <div id="slide-10" class="capture-wrapper p-[3px] rounded-[24px] bg-gradient-to-br from-tiktok-cyan via-purple-500 to-tiktok-pink">
+                    <div class="bg-tiktok-dark w-full h-full rounded-[21px] relative flex flex-col p-6 md:p-8 overflow-hidden">
+                        <div class="flex justify-between items-center w-full z-10 mb-2">
+                            <span class="bg-tiktok-pink text-white text-sm md:text-base font-bold px-4 py-1.5 rounded-full shadow-[0_0_10px_rgba(255,0,80,0.5)]">টিপস ১০</span>
+                            <span class="text-tiktok-cyan font-bold text-lg drop-shadow-[0_0_8px_rgba(1,255,255,0.6)]">১০ / ১০০</span>
+                        </div>
+                        <div class="flex-grow flex flex-col justify-center items-center text-center pb-10">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 leading-snug">টিকটক অ্যানালিটিক্স বিশ্লেষণ করুন</h2>
+                            <div class="text-gray-200 text-xl md:text-2xl space-y-6 leading-relaxed w-full">
+                                <p>আপনার অ্যাকাউন্টটিকে 'Creator Account' বা 'Business Account' এ রূপান্তর করুন। এতে আপনি অ্যানালিটিক্স দেখতে পাবেন।</p>
+                                <p>দর্শকরা কোন সময়ে সবচেয়ে বেশি অ্যাক্টিভ থাকে, কোন ভিডিও বেশি দেখছে, তা বিশ্লেষণ করে পরবর্তী ভিডিও আপলোড করুন।</p>
+                            </div>
+                        </div>
+                        <div class="watermark">@আপনার_ইউজারনেম</div>
+                    </div>
+                </div>
+                <button onclick="downloadSlide('slide-10')" class="download-btn bg-gray-900 hover:bg-gray-800 text-white rounded-2xl w-full font-bold border border-gray-700 transition flex justify-center items-center gap-3 shadow-xl">
+                    <i class="fas fa-camera text-tiktok-cyan text-xl"></i> ছবি হিসেবে সেভ করুন
+                </button>
+            </div>
+
+            <!-- To add more slides (11 to 100), copy the structure of SLIDE 10 and paste below here, changing the ID and Content -->
+
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<!-- html2canvas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+    const swiper = new Swiper(".mySwiper", {
+        direction: "horizontal", 
+        loop: false,
+        grabCursor: true,
+        keyboard: { enabled: true },
+    });
+
+    function startReading() {
+        swiper.slideNext();
+    }
+
+    function downloadSlide(slideId) {
+        const captureDiv = document.getElementById(slideId);
+        const loadingOverlay = document.getElementById('loading-overlay');
+        
+        loadingOverlay.style.display = 'flex';
+
+        // html2canvas safe setup
+        html2canvas(captureDiv, {
+            scale: 2.5, // Even higher resolution for better text clarity
+            useCORS: true,
+            backgroundColor: null // Transparent background to let the gradient wrapper show
+        }).then(canvas => {
+            const imgData = canvas.toDataURL("image/jpeg", 0.95);
+            const link = document.createElement('a');
+            link.href = imgData;
+            link.download = `tiktok-tip-${slideId}.jpg`;
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            loadingOverlay.style.display = 'none';
+        }).catch(err => {
+            console.error("Error creating image:", err);
+            loadingOverlay.style.display = 'none';
+            alert('ছবি ডাউনলোড করতে সমস্যা হয়েছে। দয়া করে আবার চেষ্টা করুন।');
+        });
+    }
+
+    // PWA Install
+    let deferredPrompt;
+    const installBtn = document.getElementById('installAppBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        installBtn.classList.remove('hidden');
+    });
+
+    installBtn.addEventListener('click', async () => {
+        if (deferredPrompt !== null) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            deferredPrompt = null;
+            installBtn.classList.add('hidden');
+        }
+    });
+</script>
+
+</body>
+</html>
+
+
+```
